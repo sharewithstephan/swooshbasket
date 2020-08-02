@@ -9,7 +9,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        Log.d(TAG,"${javaClass.simpleName} OnCreate")
+        Log.d(TAG,"${javaClass.simpleName} OnCreate")  //debug log
         super.onCreate(savedInstanceState)
     }
 
