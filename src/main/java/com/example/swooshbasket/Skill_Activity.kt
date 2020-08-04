@@ -6,24 +6,29 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_skill_.*
+import model.Player
 
 class Skill_Activity : BaseActivity() {
-    var league= ""
-    var skill= ""
+    //var league= ""
+    //var skill= ""
+    lateinit var player: Player
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skill_)
-       league= intent.getStringExtra(EXTRA_LEAGUE)!!
+       //league= intent.getStringExtra(EXTRA_LEAGUE)!!
+        player= intent.getParcelableExtra(EXTRA_PLAYER)!!
         //println(league)
     }
 
     fun onSkillFinichClicked(view: View){
 
-        if(skill!="")
+        if(player.skill!="")
         {
             val finishActivity=Intent(this, Finish_activity::class.java)
-            finishActivity.putExtra(EXTRA_LEAGUE,league)
-            finishActivity.putExtra(EXTRA_SKILL,skill)
+           // finishActivity.putExtra(EXTRA_LEAGUE,league)
+            finishActivity.putExtra(EXTRA_PLAYER, player)
+            //finishActivity.putExtra(EXTRA_PLAYER,pla)
             startActivity(finishActivity)
         }
         else{
@@ -33,11 +38,11 @@ class Skill_Activity : BaseActivity() {
     }
     fun onBallerClicked(view: View){
         beginnerSkillBtn.isChecked=false
-        skill= "baller"
+        player.skill= "baller"
     }
 
     fun onBeginnerClicked(view: View){
         ballerSkillBtn.isChecked= false
-        skill="beginner"
+        player.skill="beginner"
     }
 }

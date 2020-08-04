@@ -1,15 +1,16 @@
 package com.example.swooshbasket
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_league_activity.*
+import model.Player
 
 class league_activity : BaseActivity(){
 
-    var selectedLeague= ""
+    //var selectedLeague= ""
+    var player= Player("","")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_league_activity)
@@ -18,27 +19,31 @@ class league_activity : BaseActivity(){
     fun onMensClicked(view: View){
         womensLeagueBtn.isChecked=false
         coedLeagueBtn.isChecked=false
-        selectedLeague="mens"
+       // selectedLeague="mens"
+      player.league="mens"
     }
 
 
     fun onWomensClicked(view: View){
         mensLeagueBtn.isChecked=false
         coedLeagueBtn.isChecked=false
-        selectedLeague="womens"
+       // selectedLeague="womens"
+       player.league="womens"
     }
 
     fun onCoedClicked(view: View){
       mensLeagueBtn.isChecked=false
       womensLeagueBtn.isChecked=false
-      selectedLeague="co-ed"
+      //selectedLeague="co-ed"
+      player.league="co-ed"
     }
 
     fun leagueNextclicked(view: View){
-        if(selectedLeague!="")
+        if(player.league!="")
         {
             val skillActivity= Intent(this, Skill_Activity::class.java)
-            skillActivity.putExtra(EXTRA_LEAGUE, selectedLeague)
+           // skillActivity.putExtra(EXTRA_LEAGUE, selectedLeague)
+            skillActivity.putExtra(EXTRA_PLAYER,player)
             startActivity(skillActivity)
         }
         else{
