@@ -1,7 +1,9 @@
-package com.example.swooshbasket
+package Controller
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import Utilities.EXTRA_PLAYER
+import com.example.swooshbasket.R
 import kotlinx.android.synthetic.main.activity_finish_activity.*
 import model.Player
 
